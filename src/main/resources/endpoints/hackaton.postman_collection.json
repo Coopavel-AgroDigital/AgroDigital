@@ -1,0 +1,89 @@
+{
+	"info": {
+		"_postman_id": "91bb0b7f-1056-47bb-821f-dd1652fbf398",
+		"name": "hackaton",
+		"description": "Hackaton",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24386805",
+		"_collection_link": "https://bold-equinox-514131.postman.co/workspace/d162f65b-a19c-4b97-8b7c-fb0328cfdf2f/collection/24386805-91bb0b7f-1056-47bb-821f-dd1652fbf398?action=share&source=collection_link&creator=24386805"
+	},
+	"item": [
+		{
+			"name": "Register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"id\": 1,\r\n  \"email\": \"usuario@example.com\",\r\n  \"name\": \"Nome do Usuário\",\r\n  \"password\": \"senha_segura\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8090/user/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"user",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "Find Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8090/user/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"user",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8090/user/delete",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"user",
+						"delete"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
