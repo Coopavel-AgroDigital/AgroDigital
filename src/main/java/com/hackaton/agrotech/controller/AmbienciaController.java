@@ -38,7 +38,7 @@ public class AmbienciaController {
     }
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<?> delete(@PathVariable Ambiencia id) {
+    public ResponseEntity<?> delete(@PathVariable Long id) {
         return service.delete(id);
     }
 }

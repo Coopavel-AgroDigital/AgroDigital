@@ -3,12 +3,12 @@ package com.hackaton.agrotech.service;
 import com.hackaton.agrotech.exception.ResponseAmbiencia;
 import com.hackaton.agrotech.model.Ambiencia;
 import com.hackaton.agrotech.repository.AmbienciaRepository;
-import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class AmbienciaService {
@@ -31,18 +31,26 @@ public class AmbienciaService {
     }
 
     public List<Ambiencia> findAll() {
-        return null;
+        return repository.findAll();
     }
 
     public Ambiencia findById(Long id) {
-        return null;
+        Optional<Ambiencia> ambiencia = repository.findById(id);
+        return ambiencia.get();
     }
 
     public ResponseEntity<?> update(Ambiencia ambiencia) {
-        return null;
+        if (ambiencia.getNome().isEmpty()) {
+            message.setMessage("Ambiencia name is required");
+            return new ResponseEntity<>(message, HttpStatus.BAD_REQUEST);
+        } else {
+            return new ResponseEntity<>(repository.save(ambiencia), HttpStatus.OK);
+        }
     }
 
-    public ResponseEntity<?> delete(Ambiencia id) {
-        return null;
+    public ResponseEntity<?> delete(Long id) {
+        repository.deleteById(id);
+        message.setMessage("User deleted");
+        return new ResponseEntity<>(message, HttpStatus.OK);
     }
 }
