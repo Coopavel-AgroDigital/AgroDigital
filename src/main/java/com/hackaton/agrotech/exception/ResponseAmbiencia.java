@@ -2,11 +2,8 @@ package com.hackaton.agrotech.exception;
 
 import org.springframework.stereotype.Component;
 
-import lombok.Getter;
-import lombok.Setter;
-
 @Component
-public class ResponseUser {
+public class ResponseAmbiencia {
 
     private String message;
 
