@@ -2,10 +2,12 @@ package com.hackaton.agrotech.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
+import java.util.Date;
+
+@Data
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
@@ -19,35 +21,33 @@ public class User extends AbstractEntity {
     private String email;
     private String password;
 
-    public long getId() {
-        return id;
+    public String toJson(String name, String email) {
+        Ambiencia ambiencia = new Ambiencia();
+        ambiencia.setId(1L);
+        ambiencia.setNome("Casa do seu José");
+        ambiencia.setTemperatura(25.0);
+        ambiencia.setUmidade(60.0);
+        ambiencia.setNivelCO2("Normal");
+        ambiencia.setNivelIluminacao("Alta");
+        ambiencia.setNivelPhSolo("Neutro");
+        ambiencia.setNutrientes("Fertilizante A");
+        ambiencia.setSensacaoTermica(26.0);
+        ambiencia.setVelocidadeDoVento(15.0);
+        ambiencia.setData(new Date());
+
+        return "Identificador: " + ambiencia.getId() + "\n" +
+                "Nome: " + ambiencia.getNome() + "\n" +
+                "Temperatura: " + ambiencia.getTemperatura() + "\n" +
+                "Umidade: " + ambiencia.getUmidade() + "\n" +
+                "Nível CO2: " + ambiencia.getNivelCO2() + "\n" +
+                "Nível de Iluminação: " + ambiencia.getNivelIluminacao() + "\n" +
+                "Nível de pH do Solo: " + ambiencia.getNivelPhSolo() + "\n" +
+                "Nutrientes: " + ambiencia.getNutrientes() + "\n" +
+                "Sensação Térmica: " + ambiencia.getSensacaoTermica() + "\n" +
+                "Velocidade do Vento: " + ambiencia.getVelocidadeDoVento() + "\n" +
+                "Data: " + ambiencia.getData() + "\n" +
+                "Nome: " + name + "\n" +
+                "Email: " + email;
     }
 
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
 }
