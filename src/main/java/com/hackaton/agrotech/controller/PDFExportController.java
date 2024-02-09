@@ -1,16 +1,17 @@
 package com.hackaton.agrotech.controller;
 
+import com.hackaton.agrotech.model.PDF;
+import com.hackaton.agrotech.repository.PdfRepository;
 import com.hackaton.agrotech.service.PDFGeneratorService;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 @RestController
 @RequestMapping("/pdf")
@@ -18,6 +19,13 @@ public class PDFExportController {
 
     @Autowired
     private PDFGeneratorService pdfGeneratorService;
+
+    private PdfRepository pdfRepository;
+
+    public PDFExportController(PDFGeneratorService pdfGeneratorService, PdfRepository pdfRepository) {
+        this.pdfGeneratorService = pdfGeneratorService;
+        this.pdfRepository = pdfRepository;
+    }
 
     @GetMapping("/generate")
     public void generatePDF(HttpServletResponse response) throws IOException {
@@ -31,4 +39,19 @@ public class PDFExportController {
 
         this.pdfGeneratorService.export(response);
     }
+
+    @GetMapping("/listaPdf")
+    public List<PDF> findAll() {
+        return pdfRepository.findAll();
+    }
+
+    @PostMapping("/register")
+    public PDF register(@RequestBody PDF pdf) {
+        PDF newPDF = new PDF();
+        newPDF.setId(pdf.getId());
+        newPDF.setConteudo(pdf.getConteudo());
+        pdfRepository.save(pdf);
+        return newPDF;
+    }
+
 }
