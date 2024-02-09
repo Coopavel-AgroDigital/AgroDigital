@@ -1,6 +1,5 @@
 package com.hackaton.agrotech.service;
 
-import com.hackaton.agrotech.usecase.AmbienciaMonitor;
 import com.twilio.Twilio;
 import com.twilio.rest.api.v2010.account.Message;
 import org.springframework.stereotype.Service;
@@ -16,7 +15,7 @@ public class EmailService {
         Message.creator(
                 new com.twilio.type.PhoneNumber("whatsapp:+554591558558"),
                 new com.twilio.type.PhoneNumber("whatsapp:+14155238886"),
-                "Hello Word").create();
+                message).create();
 
         System.out.println("Hello");
     }

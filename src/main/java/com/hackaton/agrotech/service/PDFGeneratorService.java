@@ -11,10 +11,13 @@ import com.lowagie.text.Document;
 import com.lowagie.text.Font;
 import com.lowagie.text.FontFactory;
 import com.lowagie.text.Paragraph;
+import com.lowagie.text.pdf.PdfReader;
 import com.lowagie.text.pdf.PdfWriter;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Service;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Date;
 
@@ -27,7 +30,6 @@ public class PDFGeneratorService {
         Document document = new Document();
         PdfWriter.getInstance(document, response.getOutputStream());
         User user = new User();
-        Ambiencia ambiencia = new Ambiencia();
 
         String json = user.toJson("José", "José@gmail.com");
         document.open();

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Exibição de PDF</title>
+</head>
+<body>
+<iframe id="pdfViewer" src="" width="100%" height="600px"></iframe>
+<button onclick="gerarPDF()">Gerar PDF</button>
+
+<script>
+    function gerarPDF() {
+        // Supondo que você tenha uma função para gerar o PDF
+        // Substitua 'gerarPDF()' pela função real que gera o PDF e retorna o URL do PDF gerado
+        var urlDoPDF = "C:\Users\welly\OneDrive\Documentos\Projetos\AgroDigital\src\main\resources\pdf\Documento sem título.pdf";
+
+        // Atualiza o src do iframe com o URL do PDF gerado
+        document.getElementById("pdfViewer").src = urlDoPDF;
+    }
+</script>
+</body>
+</html>
