@@ -1,6 +1,7 @@
 package com.hackaton.agrotech.controller;
 
 import com.hackaton.agrotech.model.Ambiencia;
+import com.hackaton.agrotech.service.AmbienciaMonitorService;
 import com.hackaton.agrotech.service.AmbienciaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +16,9 @@ public class AmbienciaController {
 
     @Autowired
     private AmbienciaService service;
+
+    @Autowired
+    private AmbienciaMonitorService monitorService;
 
     @PostMapping("/register")
     public ResponseEntity<?> register(@RequestBody Ambiencia ambiencia) {
@@ -41,4 +45,5 @@ public class AmbienciaController {
     public ResponseEntity<?> delete(@PathVariable Long id) {
         return service.delete(id);
     }
+
 }
