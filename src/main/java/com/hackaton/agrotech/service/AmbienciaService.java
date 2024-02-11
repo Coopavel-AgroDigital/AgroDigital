@@ -15,7 +15,6 @@ public class AmbienciaService {
 
     private AmbienciaRepository repository;
     private ResponseAmbiencia message;
-
     private Double temperature;
 
     public AmbienciaService(AmbienciaRepository repository, ResponseAmbiencia message) {
@@ -28,6 +27,7 @@ public class AmbienciaService {
         if (ambiencia.getTemperatura() >= 30) {
             EmailService emailService = new EmailService();
             emailService.sendMessage("A Temperatura está muito alta!");
+            System.out.printf("A temperatura está muito alta!");
         }
         if (ambiencia.getNome().isEmpty()) {
             message.setMessage("Ambiencia name is required");
@@ -38,18 +38,10 @@ public class AmbienciaService {
     }
 
     public List<Ambiencia> findAll() {
-        if (temperature >= 30){
-            EmailService emailService = new EmailService();
-            emailService.sendMessage("A Temperatura está muito alta!");
-        }
         return repository.findAll();
     }
 
     public Ambiencia findById(Long id) {
-        if (temperature >= 30){
-            EmailService emailService = new EmailService();
-            emailService.sendMessage("A Temperatura está muito alta!");
-        }
         Optional<Ambiencia> ambiencia = repository.findById(id);
         return ambiencia.get();
     }
